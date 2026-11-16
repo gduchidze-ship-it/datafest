@@ -1,0 +1,7 @@
+# Tests assert freely and are named, not documented. This lives here rather
+# than in a per-file-ignores table so it still applies when a caller passes
+# its own per-file-ignores on the command line.
+extend = "../pyproject.toml"
+
+[lint]
+ignore = ["D203", "D213", "TRY003", "S101", "D"]

@@ -1,0 +1,472 @@
+title = "Not every agent decision deserves an LLM"
+forbidden = ["jev", "typesafe", "noul", "deepeval", "diogo", "laya", "convai"]
+
+[colors]
+# surfaces
+"#0b0d10" = "#121212"
+"#0b0b0b" = "#121212"
+"#07090c" = "#121212"
+"#0f1a24" = "#121212"
+"#0f1a1f" = "#121212"
+"#10141a" = "#121212"
+"#0d1322" = "#121212"
+"#000000" = "#121212"
+# text
+"#eef0f2" = "#FFFFFF"
+"#f0efec" = "#FFFFFF"
+# near-white highlights: the hue fallback would tint these
+"#e6fbff" = "#FFFFFF"
+"#fff3d6" = "#FFFFFF"
+"#7d8794" = "#B6B2C7"
+"#9aa4af" = "#B6B2C7"
+"#b8c0ca" = "#B6B2C7"
+"#4a525c" = "#777581"
+# Decisions / accent (was cyan, and the violet decision lane)
+"#22d3ee" = "#A088EB"
+"#5ec8db" = "#A088EB"
+"#cffafe" = "#A088EB"
+"#9beaf7" = "#A088EB"
+"#9befff" = "#A088EB"
+"#a78bfa" = "#A088EB"
+"#c4b5fd" = "#A088EB"
+"#a596d6" = "#A088EB"
+"#6b5ca8" = "#777581"
+"#3f3666" = "#777581"
+# LLM / caution (was amber, and the teal LLM lane)
+"#f5a524" = "#D1FF8B"
+"#d9a24a" = "#D1FF8B"
+"#fde2b0" = "#D1FF8B"
+"#fde68a" = "#D1FF8B"
+"#5eead4" = "#D1FF8B"
+"#2dd4bf" = "#D1FF8B"
+# risk
+"#f25f5c" = "#DD7846"
+"#e5534b" = "#DD7846"
+"#ff8a88" = "#DD7846"
+# people / secondary
+"#f472b6" = "#BABFFA"
+"#d88bb4" = "#BABFFA"
+# pass
+"#4ade80" = "#8DDEB7"
+"#ffd27a" = "#D1FF8B"
+"#2e2652" = "#211F23"
+"#2e4a55" = "#211F23"
+"#5a2a2a" = "#211F23"
+
+[[sections]]
+short = "Your Next Users Are Agents"
+start = 0
+end = 4
+[[sections]]
+short = "Decision Model Versus LLM"
+start = 4
+end = 11
+[[sections]]
+short = "Post-training: RLHF → RLVR → RLCD"
+start = 11
+end = 14
+[[sections]]
+short = "The Agent Harness"
+start = 14
+end = 19
+[[sections]]
+short = "Effective Agents, No Slop"
+start = 19
+end = 23
+[[sections]]
+short = "Impel Case: Jailbreak Detection"
+start = 23
+end = 29
+[[sections]]
+short = "Harness Design: Before And After"
+start = 29
+end = 33
+[[sections]]
+short = "Code Execution"
+start = 33
+end = 57
+[[sections]]
+short = "Takeaways And Q&A"
+start = 57
+end = 60
+
+# ---------------------------------------------------------------- opening
+[[slides]]
+source = 1
+label = "Not every agent decision deserves an LLM"
+notes = "Follow the little explorer. 2017: one Transformer, encoder plus decoder. 2018 it splits: BERT reads, GPT writes, and the reading branch fades. November 2022, ChatGPT: writing wins the decade. 2024: RL and reasoning push generation further. In 2026 the decision branch comes back as the Decisions API. The claim of this talk: not every agent decision deserves an LLM."
+text = [
+  { frame = "e1", html = "Not every agent decision\ndeserves an LLM" },
+  { frame = "e11", html = "Decisions" },
+]
+drop = ["e2"]
+style = [
+  { frame = "e1", set = { top = "168px", "font-size" = "104px" } },
+  # the labels sit above the taller explorer as it walks under them
+  { frame = "e9", set = { top = "572px" } },
+  { frame = "e23", set = { top = "572px" } },
+  { frame = "e11", set = { top = "468px", "font-size" = "34px" } },
+]
+# a larger explorer: a small robot with a lantern instead of the bare diamond
+svg_edit = [ { frame = "e0", pattern = '(?s)<ellipse cx="0" cy="27" rx="15" ry="3".*(?=</g>\s*</svg>)', repl = '''
+<ellipse cx="0" cy="31" rx="24" ry="4" fill="#000000" opacity="0.55"/>
+<g transform="translate(0 -15) scale(1.7)">
+<animateTransform attributeName="transform" type="translate" additive="sum" values="0 0;0 -3;0 0" dur="0.5s" repeatCount="indefinite"/>
+<path d="M24 -2 L150 -44 L150 36 Z" fill="url(#cone)"><animate attributeName="opacity" values="0.5;0.85;0.5" dur="1.8s" repeatCount="indefinite"/></path>
+<g stroke="#FFFFFF" stroke-width="3" stroke-linecap="round">
+<line x1="-6" y1="15" x2="-6" y2="26"><animate attributeName="x2" values="-10;-2;-10" dur="0.5s" repeatCount="indefinite"/></line>
+<line x1="6" y1="15" x2="6" y2="26"><animate attributeName="x2" values="10;2;10" dur="0.5s" repeatCount="indefinite"/></line>
+<path d="M13 5 L22 1"/>
+</g>
+<rect x="-13" y="-3" width="26" height="19" rx="7" fill="#211F23" stroke="#FFFFFF" stroke-width="3"/>
+<polygon points="0,2 4.5,6.5 0,11 -4.5,6.5" fill="#22D3EE"><animate attributeName="opacity" values="0.45;1;0.45" dur="1.2s" repeatCount="indefinite"/></polygon>
+<circle cx="24" cy="0" r="4.5" fill="#F5A524" filter="url(#gl)"/>
+<line x1="0" y1="-31" x2="0" y2="-40" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="0" cy="-43" r="3.5" fill="#22D3EE"><animate attributeName="opacity" values="1;0.25;1" dur="0.9s" repeatCount="indefinite"/></circle>
+<rect x="-17" y="-31" width="34" height="27" rx="11" fill="#211F23" stroke="#FFFFFF" stroke-width="3"><animate attributeName="stroke" values="#FFFFFF;#FFFFFF;#22D3EE;#22D3EE" keyTimes="0;0.76;0.84;1" dur="16s" repeatCount="indefinite"/></rect>
+<rect x="-12" y="-25" width="24" height="14" rx="7" fill="#000000"/>
+<g fill="#FFFFFF">
+<animateTransform attributeName="transform" type="translate" values="0 0;0 0;2 -1;2 -1;0 0;0 0;2 -1;2 -1;0 0" keyTimes="0;0.22;0.23;0.32;0.33;0.47;0.48;0.56;0.57" dur="16s" repeatCount="indefinite"/>
+<ellipse cx="-4" cy="-18" rx="2.6" ry="3.4"><animate attributeName="ry" values="3.4;3.4;0.5;3.4" keyTimes="0;0.9;0.95;1" dur="3s" repeatCount="indefinite"/></ellipse>
+<ellipse cx="5" cy="-18" rx="2.6" ry="3.4"><animate attributeName="ry" values="3.4;3.4;0.5;3.4" keyTimes="0;0.9;0.95;1" dur="3s" repeatCount="indefinite"/></ellipse>
+</g>
+</g>
+''' } ]
+alt = [ { frame = "e0", text = "Animated timeline from the 2017 Transformer through BERT and GPT, ChatGPT and reasoning models to the 2026 decision branch" } ]
+append = "slides/_logo_top.html"
+
+[[slides]]
+source = 2
+label = "Giorgi Duchidze"
+notes = "Quick intro: I'm Giorgi Duchidze, Software Engineer at Impel and an OpenAI Codex Ambassador. I work on agent harnesses, and that is what this talk is about."
+text = [ { frame = "e3", html = "SPEAKER" } ]
+# static and plain: no rings, no orbiting marks, the two roles set as a small table
+drop = ["e1", "e5"]
+style = [
+  { frame = "e2", set = { left = "220px", top = "270px", width = "540px", height = "540px" } },
+  { frame = "e3", set = { left = "1000px", top = "296px" } },
+  { frame = "e4", set = { left = "994px", top = "356px" } },
+]
+append = "slides/_speaker.html"
+
+[[slides]]
+fragment = "slides/03_agenda.html"
+label = "Agenda"
+notes = "Nine parts. Why agents are your next users, what a decision model is, how these models are trained, what a harness is, how to avoid slop, the Impel jailbreak case, the harness design before and after, then live code, and takeaways."
+
+# ---------------------------------------------------------------- 1
+[[slides]]
+fragment = "slides/04_fanout.html"
+label = "Your Next 1 Million Users Are Not Humans"
+section = 1
+notes = "One person types one request. The agent turns it into many calls against your software: search, read, call an API, run tests, retry. Your next million users are these machine callers. Click: every one of those calls starts with a decision. Which tool, is it safe, is it done. The diagram is illustrative."
+builds = [["b1"]]
+build_effect = "rise"
+
+[[slides]]
+fragment = "slides/05_mostly_decisions.html"
+label = "An agent run is mostly decisions"
+section = 1
+notes = "Take one coding-agent run and tag every step. Two steps write: deciding what to read and writing the change. Six steps decide: routing, gating the edit, diagnosing the test failure, the risky command, the doc page, the done check. Click: six of eight are decisions, and today each one is a full LLM call. Hold on to this run; it comes back in part seven."
+builds = [["b1", "b2"]]
+build_effect = "rise"
+
+# ---------------------------------------------------------------- 2
+[[slides]]
+fragment = "slides/06_llm_vs_decision.html"
+label = "LLM vs decision model"
+section = 2
+notes = "An LLM generates text token by token, and you parse it. A decision model answers typed questions: a probability, a choice, a score. From OpenAI's guide: 1 to 400 questions per request, input tokens only at 10 cents per million on gpt-6-luna with output not charged, and about 10x faster than the Responses API. Use the LLM for plans, code and explanations; use the decision model to route, gate, classify and score."
+
+[[slides]]
+source = 9
+label = "How Decisions works"
+section = 2
+notes = "Input: shared evidence plus a list of questions. One Decisions call answers them together, each with a typed result. Three primitives. predicate checks a condition and returns the probability that it is true: an if. choice selects one of your values: a switch. score rates against ordered levels and returns the probability-weighted average of the level indices: a slider. One request takes 1 to 400 questions."
+text = [
+  { frame = "e2", html = "How Decisions works" },
+  { frame = "e5", html = "Decisions" },
+  { frame = "e6", html = "choice" },
+  { frame = "e7", html = "switch · one of your values" },
+  { frame = "e8", html = "score" },
+  { frame = "e9", html = "slider · weighted level" },
+  { frame = "e10", html = "predicate" },
+  { frame = "e11", html = "if · P(true) 0 → 1" },
+]
+style = [
+  { frame = "e5", set = { left = "680px", width = "240px", "font-size" = "25px" } },
+  { frame = "e7", set = { width = "300px", "font-size" = "22px" } },
+  { frame = "e9", set = { width = "300px", "font-size" = "22px" } },
+  { frame = "e11", set = { width = "300px", "font-size" = "22px" } },
+]
+drop = ["e14", "e15"]
+# the two formula panels at the bottom of the scene described the old product's maths
+svg_edit = [ { frame = "e0", pattern = '(?s)<g fill="#0F1A1F" stroke="#22D3EE" stroke-opacity="0\.35".*(?=</svg>)', repl = "" } ]
+alt = [ { frame = "e0", text = "Animated: state and questions stream into one Decisions core, which returns a choice, a score and a predicate" } ]
+append = "slides/_how_line.html"
+
+[[slides]]
+fragment = "slides/08_request_answers.html"
+label = "One request, named answers"
+section = 2
+notes = "This is the contract. The request has a model, shared input, and a questions array. Each question has a type, instructions and a name. Click: the response contains an answers array. Give each question a unique name to identify its answer; the API echoes that name in the response. So map answers by name, not by position. predicate returns a probability; choice and score also return a confidence."
+builds = [["res"]]
+
+[[slides]]
+fragment = "slides/09_calibration.html"
+label = "Calibration"
+section = 2
+notes = "Calibration is what makes a probability usable. Take every prediction where the model said 0.5 and put them in one jar; every 0.8 in another; every 0.9 in a third. If the model is calibrated, about half of the 0.5 jar is right, 8 of 10 in the 0.8 jar, 9 of 10 in the 0.9 jar. Each jar is one point on a reliability plot, and the points land on the diagonal. The jars and the plot are illustrative. 0.8 means about 80% of these predictions are right, not that this one is. So measure your own reliability curve before code sets thresholds: golden set, shadow mode, reliability curve, thresholds, then conformal guarantees."
+
+[[slides]]
+source = 18
+label = "Where a decision model falls short"
+section = 2
+notes = "A decision model is good at fast, cheap, simple decisions: route, gate, classify, score. Once a decision needs a plan, multi-step logic or deep knowledge, the LLM is still better. Five risks to test on your own data; the pictures are illustrative, not measurements. Long context costs more and dilutes evidence. Evidence in the middle of a long input can be missed. Specialised knowledge. Overconfidence: right answer, wrong probability. Inherited bias. These are risks of this model class, not published figures for one product."
+text = [
+  { frame = "e2", html = "Where a decision model falls short" },
+  { frame = "e9", html = "Decisions: fast · cheap · simple ✓" },
+  { frame = "e25", html = "Decisions" },
+  { frame = "e28", html = "Decisions" },
+  { frame = "e41", html = "Long context" },
+  { frame = "e45", html = "costs more\nkeep evidence short" },
+  { frame = "e34", html = "Decisions for fast, typed answers · LLM when it has to think" },
+]
+style = [
+  { frame = "e24", set = { left = "730px", width = "130px", "font-size" = "20px", "text-align" = "right" } },
+  { frame = "e25", set = { left = "730px", width = "130px", "font-size" = "20px", "text-align" = "right" } },
+  { frame = "e28", set = { width = "120px", "font-size" = "20px" } },
+]
+drop = ["e43", "e44"]
+alt = [ { frame = "e0", text = "Animated: a spectrum from no reasoning to heavy reasoning, and five illustrative limits of a decision model" } ]
+
+# ---------------------------------------------------------------- 3
+[[slides]]
+source = 5
+label = "Intelligence is no longer the bottleneck. Reliability is."
+section = 3
+notes = "Models are smart enough. The problem is reliability, and reliability depends on what you train for. Three north stars: RLHF puts a human in the loop, RLVR a verifier, RLCD a program."
+drop = ["e27", "e13", "e14"]
+builds = []
+colors = { "#a78bfa" = "#8DDEB7", "#a596d6" = "#8DDEB7" }
+icons = [
+  { frame = "e7", icon = "person" },
+  { frame = "e8", icon = "check" },
+  { frame = "e9", icon = "code" },
+]
+append = "slides/_rl_line.html"
+
+[[slides]]
+source = 6
+label = "RLHF"
+section = 3
+notes = "RLHF: the model writes two answers, a human picks the one they prefer, a reward model learns that preference, and the LLM is updated toward it. It optimises for answers raters prefer. Preferred is not the same as correct."
+icons = [ { frame = "e8", icon = "person" } ]
+
+[[slides]]
+source = 7
+label = "RLVR"
+section = 3
+notes = "RLVR: the model generates many candidates, a verifier such as a test suite or proof checker passes or fails each one, and that becomes the reward. It optimises for outputs a program can verify."
+colors = { "#a78bfa" = "#8DDEB7", "#c4b5fd" = "#8DDEB7" }
+icons = [ { frame = "e6", icon = "check" } ]
+
+[[slides]]
+source = 8
+label = "RLCD"
+section = 3
+notes = "RLCD: state and a question go in, a probability for every typed option comes out. The reward is calibration: honest probabilities, where higher confidence means higher accuracy. The program is in the loop, not a human or a string checker. That is what makes a decision model usable as a smart if-statement."
+text = [ { frame = "e5", html = "decision\nmodel" } ]
+style = [ { frame = "e5", set = { left = "540px", width = "200px", top = "484px", "font-size" = "26px" } } ]
+alt = [ { frame = "e1", text = "Animated RLCD loop: state and question stream into a decision model, which returns probabilities for options A, B and C, rewarded for calibration" } ]
+icons = [ { frame = "e9", icon = "target" } ]
+
+# ---------------------------------------------------------------- 4
+[[slides]]
+fragment = "slides/14_harness.html"
+label = "Agent = model + harness"
+section = 4
+notes = "An agent is a model plus a harness. The model writes text and code. Everything around it is the harness: routing, the loop, tools, context, permissions, memory, checks, handoff. Claude Code, Codex and a LangGraph runner are all harnesses. Look at the question under each job. Click: eight harness jobs, and every one is a question with a typed answer."
+builds = [["b1"]]
+build_effect = "rise"
+
+[[slides]]
+source = 12
+label = "AI gateway"
+section = 4
+notes = "One real request through an AI gateway inside a coding agent. 1: the developer asks to center the login card in LoginPage.tsx. 2: before any model runs, the gateway asks Decisions about domain, risk, complexity and prompt injection, and gets probabilities back. 3: a gateway rule, plain code, uses those numbers to pick the model: low complexity goes to the cheaper model, a hard multi-file refactor to the larger one. 4: the LLM writes the change as a tool call. 5: the gateway asks Decisions again: is the edit destructive, does it match the request, does it stay in scope. 6: the gateway applies the edit. Decisions advises, the gateway decides, the LLM writes. Decide the failure policy per step in advance. Example probabilities are illustrative."
+text = [
+  { frame = "e9", html = "Decisions" },
+  { frame = "e22", html = "Decisions" },
+]
+style = [
+  { frame = "e9", set = { left = "440px", width = "180px", "font-size" = "19px" } },
+  { frame = "e22", set = { left = "1330px", width = "180px", "font-size" = "19px" } },
+]
+alt = [ { frame = "e0", text = "Animated AI gateway in a coding agent: the request passes a Decisions check, a router, the LLM, a second Decisions check, and is applied" } ]
+
+[[slides]]
+source = 15
+label = "Long-horizon agents with a decision layer"
+section = 4
+notes = "Long-running agents age: context bloats, tokens compound, quality decays. Split the work. The LLM only plans, at a few camps along a multi-hour run: slow and rare. Above the road runs the decision rail, and every pin is a place a decision model acts. Route to the cheapest model that can do the task. Context: keep what matters, drop what is stale. Tool gate: classify risk before a command runs. Sentinel: label the step and track progress and budget. Done: decide whether the task is finished. Probabilities stay in agent state, so code makes the final call. The gap: a per-step decision model is a weak global verifier for a long run."
+text = [
+  { frame = "e1", html = "Long-horizon agents with a decision layer" },
+  { frame = "e3", html = "Decisions" },
+  { frame = "e16", html = "CONTEXT · drop stale" },
+  { frame = "e19", html = "Gap: a per-step decision model is a weak global verifier" },
+]
+alt = [ { frame = "e0", text = "Animated multi-hour agent run: the LLM plans at a few camps on a road while a decision rail above it routes, gates tools and checks progress" } ]
+
+# ---------------------------------------------------------------- 5
+[[slides]]
+fragment = "slides/17_slop.html"
+label = "Slop compounds"
+section = 5
+notes = "Per-step accuracy is not system success. One step at 95% is fine. Five steps: 77%. Ten: 60%. Twenty: 36%. This is plain arithmetic under independence. Click: what keeps an agent effective is small steps with typed answers, thresholds from your own labelled examples, and code making the final call. Click: raise per-step reliability or cut the number of steps that can fail."
+builds = [["fix"], ["b1"]]
+build_effect = "rise"
+
+[[slides]]
+source = 19
+label = "LLM or Decisions? Only evals know."
+section = 5
+notes = "Model choice is now per decision, not per app. The workflow: keep a decision registry, build a golden set for each decision, make both models answer the same schema, run A/B or a cascade with Decisions first and the LLM when confidence is low, and lock it in with CI regression tests. The metric that matters is automation rate at high precision: how much the decision model handles on its own before precision breaks."
+text = [ { frame = "e1", html = "LLM or Decisions? Only evals know." } ]
+alt = [ { frame = "e0", text = "Animated eval pipeline: a decision travels through registry, golden set, same schema, A/B or cascade, and CI regression" } ]
+
+[[slides]]
+source = 10
+label = "Decisions as a judge"
+section = 5
+notes = "The judge. The tool returned only temperature and condition. The agent added a breeze and 40% humidity: hallucinated. Four questions, two predicates, one score and one choice, go in one Decisions request with no generated explanation, and give one faithfulness score."
+text = [
+  { frame = "e2", html = "Decisions as a judge" },
+  { frame = "e12", html = "predicate" },
+  { frame = "e13", html = "predicate" },
+  { frame = "e14", html = "score" },
+  { frame = "e15", html = "choice" },
+]
+icons = [
+  { frame = "e8", icon = "question" },
+  { frame = "e9", icon = "question" },
+  { frame = "e10", icon = "question" },
+  { frame = "e11", icon = "question" },
+]
+
+# ---------------------------------------------------------------- 6
+[[slides]]
+source = 17
+label = "Prompt injection: who guards the guard?"
+section = 6
+notes = "If a decision model guards the agent, who guards the decision model? It reads the same untrusted input. Watch the scan: it sweeps the document, finds the hidden instruction and marks it untrusted. Treat it as one layer of defence, not a wall: the attack slows down at Decisions, then at code rules, permissions, and finally a human. That is exactly how we built jailbreak detection at Impel."
+text = [
+  { frame = "e10", html = "Decisions is a layer, not a wall." },
+  { frame = "e26", html = "Decisions" },
+  { frame = "e9", html = "Decisions" },
+]
+drop = ["e32", "e6", "e7"]
+# the right-hand panel illustrated an option-reordering result measured on the old product
+svg_edit = [ { frame = "e0", pattern = '(?s)<g fill="#0F1A1F" stroke="#22D3EE" stroke-opacity="0\.5" stroke-width="2"><rect x="840".*?(?=<g fill="#22D3EE" fill-opacity="0\.18")', repl = "" } ]
+append = "slides/_guard_card.html"
+alt = [ { frame = "e0", text = "Animated prompt injection: a scan beam sweeps a document, marks a hidden instruction untrusted, and the attack passes layered defences" } ]
+
+[[slides]]
+fragment = "slides/21_jb_before.html"
+label = "Before: every message is an LLM call"
+section = 6
+notes = "The Impel case. Every inbound message was screened for jailbreaks by GPT 5.1 before the agent replied. A yes/no question, answered with a generation, on 100% of messages. Most traffic is ordinary, and we paid LLM price to confirm it."
+
+[[slides]]
+fragment = "slides/22_jb_after.html"
+label = "After: cheap checks first, the LLM last"
+section = 6
+notes = "The new pipeline. Every message goes to a security Guardrail and one Decisions API call in parallel. If neither flags it, the message is allowed: that is about 90% of traffic. Only what they flag, about 10%, goes to 6.1 Terra, an LLM judge, which rules allow or block. The LLM still makes the hard calls. It just stops making the easy ones."
+
+[[slides]]
+fragment = "slides/23_jb_result.html"
+label = "Result: 68% lower cost"
+section = 6
+notes = "The result: 68% lower cost than the GPT 5.1 detector. Indexed, 100 becomes 32. The stack is the Decisions API plus the security Guardrail plus 6.1 Terra on about 10% of messages. About 90% of messages no longer reach an LLM. This is Impel's internal measurement."
+
+# ---------------------------------------------------------------- 7
+[[slides]]
+source = 13
+label = "BEFORE · every decision is an LLM call"
+section = 7
+notes = "The high-level design, before. Same task, same steps as in part one. Every decision in this loop, which model and tools, what to read, how to write, why the test failed, whether to run a command, whether to trust a doc page, whether it is really done, is an LLM call. Each is a reasoning turn, they run one after another, and the time bar fills all the way. The decision layer is empty. Illustrative example."
+text = [
+  { frame = "pi-l2", html = "Decisions" },
+  { frame = "pi-ln2", html = "DECISIONS · DECISION LAYER" },
+]
+alt = [ { frame = "e0", text = "Animated before: seven steps, every decision sits in the LLM lane and the decision layer is empty" } ]
+icons = [
+  { frame = "pi-i1", icon = "chat" },
+  { frame = "pi-i2", icon = "search" },
+  { frame = "pi-i3", icon = "pencil" },
+  { frame = "pi-i4", icon = "xcircle" },
+  { frame = "pi-i5", icon = "alert" },
+  { frame = "pi-i6", icon = "file" },
+  { frame = "pi-i7", icon = "check" },
+]
+
+[[slides]]
+source = 14
+label = "AFTER · decisions move to the Decisions API"
+section = 7
+notes = "After. The exact same steps. The LLM lane now holds only the two things that need generation: deciding what to read and writing the code. Every other decision drops into the decision layer: routing, the edit gate, the test failure, the risky command, the doc page and the done check. Decisions returns typed answers with probabilities and never writes text, so the playhead jumps through those steps and the time bar stops well before the old run ended. Decisions advises, code decides, the LLM writes. Illustrative example."
+text = [
+  { frame = "pi-h", html = "AFTER · decisions move to the Decisions API" },
+  { frame = "pi-l2", html = "Decisions" },
+  { frame = "e24", html = "complexity 2/3 → cheaper" },
+  { frame = "pi-ln2", html = "DECISIONS API · TYPED ANSWERS · NO GENERATED TEXT" },
+  { frame = "pi-s", html = "6 decisions → Decisions API · the LLM only reads &amp; writes code" },
+]
+style = [
+  { frame = "e24", set = { "font-size" = "20px" } },
+  { frame = "e25", set = { "font-size" = "20px" } },
+  { frame = "e26", set = { "font-size" = "20px" } },
+  { frame = "e27", set = { "font-size" = "20px" } },
+  { frame = "e28", set = { "font-size" = "20px" } },
+  { frame = "e29", set = { "font-size" = "20px" } },
+]
+alt = [ { frame = "e0", text = "Animated after: the same seven steps, the LLM lane keeps reading and writing, and six decisions move to the decision layer" } ]
+icons = [
+  { frame = "pi-i1", icon = "chat" },
+  { frame = "pi-i2", icon = "search" },
+  { frame = "pi-i3", icon = "pencil" },
+  { frame = "pi-i4", icon = "xcircle" },
+  { frame = "pi-i5", icon = "alert" },
+  { frame = "pi-i6", icon = "file" },
+  { frame = "pi-i7", icon = "check" },
+]
+
+# ---------------------------------------------------------------- 8
+[[slides]]
+fragment = "slides/26_code.html"
+label = "Code execution"
+section = 8
+slide_class = "impel-divider"
+notes = "Live code. One predicate and its probability. Many named questions in one request. choice and score with confidence. Thresholds from labelled examples. Gating a tool call in the harness. Escalating low confidence to the LLM."
+
+# ---------------------------------------------------------------- 9
+[[slides]]
+fragment = "slides/27_takeaways.html"
+label = "Takeaways"
+section = 9
+notes = "Three things to take home. One: for every step, ask whether it is writing or deciding. Two: the model returns probabilities and your code makes the call. Three: keep the LLM for the cases that need it; at Impel that is about 10% of jailbreak checks and the bill is 68% lower. Questions."
+builds = [["n2"], ["n3"], ["qa"]]
+build_effect = "rise"
+
+[[slides]]
+fragment = "slides/28_resources.html"
+label = "Resources"
+section = 9
+notes = "Three places to start, all from OpenAI: the Decisions API guide, the create-decision reference, and the Playground."
+
+[[slides]]
+source = 21
+label = "Is this step writing or deciding?"
+notes = "Back to the timeline: reads, writes, decides. One question to take home: for every step in your agent, is this step writing or deciding? If it is deciding, it probably should not be a generation. Thank you. Scan the QR to find me on LinkedIn; I am also on GitHub and X."
+alt = [ { frame = "e1", text = "Animated ending: the opening timeline returns in miniature and the explorer climbs the decision branch" } ]
+append = "slides/_logo_top.html"

@@ -1,0 +1,45 @@
+title = "The Classifier Strikes Back: Decisions as a Decision Layer"
+forbidden = ["jev", "typesafe"]
+
+[colors]
+"#22d3ee" = "#A088EB"
+"#0b0d10" = "#121212"
+"#22d3ee55" = "#3E245C"
+
+[[sections]]
+short = "Agents are the users"
+start = 0
+end = 4
+
+[[sections]]
+short = "How it works"
+start = 4
+end = 10
+
+[[slides]]
+source = 2
+label = "Three north stars"
+drop = ["e4"]
+icons = [ { frame = "e2", icon = "person" } ]
+builds = [["e1"], ["e3"]]
+build_effect = "rise"
+
+[[slides]]
+fragment = "slides/fanout.html"
+label = "Fan-out"
+notes = "One call, many \"typed\" answers."
+section = 1
+slide_class = "impel-divider"
+builds = [["fan-a", "fan-b"], ["fan-c"]]
+
+[[slides]]
+source = 1
+label = "Why “Decisions”?"
+notes = "Named after the paradox."
+section = 2
+text = [ { frame = "e1", html = "Why Decisions?" } ]
+style = [ { frame = "e1", set = { left = "700px", "font-size" = "40px" } } ]
+alt = [ { frame = "e2", text = "Animated core" } ]
+svg_edit = [ { frame = "e2", pattern = '<circle.*</circle>', repl = "" } ]
+drop = ["e12"]
+append = "slides/footer.html"

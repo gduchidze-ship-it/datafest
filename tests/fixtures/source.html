@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src data: https://fonts.gstatic.com; img-src data: blob:">
+<meta name="hz:slide-selector" content=".slide">
+<title>The Classifier Strikes Back: Jev as a Decision Layer</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400..700&amp;display=swap">
+<style>
+
+@layer theme {
+  :root { --editor-accent: #ff00ff; }
+}
+@layer base {
+  *, ::after, ::before { box-sizing: border-box; border: 0px solid; margin: 0px; padding: 0px; }
+  html, :host { line-height: 1.5; font-family: var(--default-font-family,-apple-system, "Segoe UI", sans-serif); }
+  b, strong { font-weight: bolder; }
+  img, svg { vertical-align: middle; display: block; }
+  button { font: inherit; background-color: rgba(0, 0, 0, 0); }
+  @supports (color:color-mix(in lab, red, red)) {
+  ::placeholder { color: color-mix(currentcolor, transparent); }
+}
+}
+@layer utilities {
+  .editor-only { color: #ff00ff; font-weight: 700; }
+}
+[data-text-path] b { font-weight: 700; }
+@font-face { font-family: mc-anthropicons; src: url("data:font/woff2;base64,d09GMgABAAAAADlk") format("woff2"); }
+@font-face { font-family: Geist; font-weight: 400 700; src: url("data:font/woff2;base64,d09GMgABAAAAADlk") format("woff2"); }
+
+</style>
+<!--
+The font files embedded in this page (the data: URLs in the @font-face rules above) are licensed.
+-->
+<style>
+html{background:#000;color-scheme:dark}
+body{margin:0;background:#000;overflow:visible}
+.deck-slide{display:block;width:1920px;height:1080px}
+.deck-pager{position:fixed;background:rgba(0,0,0,.7);color:#fff;font:12px/1.5 system-ui,sans-serif;opacity:0}
+@media print{html,body{background:none}}
+</style>
+<script type="application/json" id="deck-motion">{"w":1920,"h":1080,"buildMs":380,"effects":{"fade":{"transform":"","easing":"ease"},"rise":{"transform":"translateY(48px)","easing":"ease"}},"transMs":{"fade":320,"push":420,"magic":480},"live":true,"slides":[{"transition":"fade","bg":"#0b0d10","steps":[{"hidden":[],"events":[],"auto":false}],"embeds":[]},{"transition":"fade","bg":"#0b0d10","steps":[{"hidden":["e3-bbb222","e4-bbb222"],"events":[],"auto":false},{"hidden":["e4-bbb222"],"events":[{"id":"e3-bbb222","dir":"in","effect":"fade"}],"auto":false},{"hidden":[],"events":[{"id":"e4-bbb222","dir":"in","effect":"fade"}],"auto":false}],"embeds":[]},{"transition":"push","bg":"#0f1a1f","steps":[{"hidden":[],"events":[],"auto":false}],"embeds":[]}]}</script>
+<script>(function S11($){var n=document.querySelectorAll(".deck-slide").length;var c="#0b0d10";if(1<n){c="rgb(1, 2, 3)"}})(JSON.parse(document.getElementById("deck-motion").textContent));</script>
+</head>
+<body>
+<main data-appifact-content style="font:16px / 24px ui-sans-serif, system-ui, -apple-system, &quot;Segoe UI&quot;, sans-serif;color:rgb(240, 239, 236)">
+<section class="deck-slide" id="1" aria-roledescription="slide" aria-label="Slide 1 of 3" data-document-role="page" data-label="Why “Jev”?" data-speaker-notes="Jev is named after Jevons &amp; the &quot;paradox&quot;."><div class="deck-fit"><div class="deck-scaler"><div style="width: 1920px; height: 1080px; position: relative; background: rgb(11, 13, 16); overflow: clip; contain: paint;" class="slide" data-canvas-width="1920" data-canvas-height="1080"><div data-frame-id="e0-aaa111" style="position: absolute; inset: 0px; box-sizing: border-box;"><div data-node-path="" style="display: flex; width: 100%; height: 100%; background-image: linear-gradient(rgb(11, 13, 16) 0%, rgb(13, 19, 34) 100%);"></div></div><div data-frame-id="e1-aaa111" style="position: absolute; left: 128px; width: 600px; top: 100px; box-sizing: border-box;"><div data-text-path="" data-node-path="" style="font-family: Geist, Arial, ui-sans-serif, system-ui, sans-serif; font-size: 96px; font-weight: 700; color: rgb(238, 240, 242); line-height: 1.2; margin: 0px; white-space: pre-wrap;">Why <font color="#22d3ee" style="color: rgb(34, 211, 238); -webkit-text-fill-color: currentcolor;">Jev</font>?
+Line two</div></div><div data-frame-id="e2-aaa111" style="position: absolute; left: 900px; width: 400px; top: 200px; height: 400px; box-sizing: border-box;"><img data-img-path="" data-node-path="" alt="Animated Jev core" draggable="false" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGFyaWEtbGFiZWw9IkFuaW1hdGVkIEpldiBjb3JlIiB2aWV3Qm94PSIwIDAgMTAgMTAiPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iYWJjIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMyMmQzZWUiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIGZpbGw9InVybCgjYWJjKSIgc3Ryb2tlPSIjMGIwZDEwIi8+PGNpcmNsZSByPSIyIiBmaWxsPSIjZjVhNTI0Ij48YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJmaWxsIiB2YWx1ZXM9IiNmNWE1MjQ7I2VlZjBmMiIgZHVyPSIycyIgZmlsbD0iZnJlZXplIi8+PC9jaXJjbGU+PC9zdmc+" style="width: 100%; height: 100%; display: block; object-fit: contain;"></div><div data-frame-id="e12-aaa111" style="position: absolute; left: 128px; width: 600px; top: 100px; box-sizing: border-box;"><div data-text-path="" data-node-path="" style="font-family: &quot;Geist Mono&quot;, &quot;Courier New&quot;, ui-monospace, monospace; font-size: 24px; font-weight: 400; color: rgb(125, 135, 148); line-height: 1.2; margin: 0px; white-space: pre-wrap;">Jevons <i>paradox</i></div></div></div></div></div></section>
+<section class="deck-slide" id="2" aria-roledescription="slide" aria-label="Slide 2 of 3" data-document-role="page" data-label="Three stars" data-speaker-notes="Reliability notes."><div class="deck-fit"><div class="deck-scaler"><div style="width: 1920px; height: 1080px; position: relative; background: rgb(11, 13, 16); overflow: clip; contain: paint;" class="slide" data-canvas-width="1920" data-canvas-height="1080"><div data-frame-id="e1-bbb222" style="position: absolute; left: 128px; width: 600px; top: 100px; box-sizing: border-box;"><div data-text-path="" data-node-path="" style="font-family: Geist, Arial, ui-sans-serif, system-ui, sans-serif; font-size: 60px; font-weight: 500; color: rgb(238, 240, 242); line-height: 1.2; margin: 0px; white-space: pre-wrap;">Reliability</div></div><div data-frame-id="e2-bbb222" style="position: absolute; left: 376px; width: 48px; top: 586px; height: 48px; box-sizing: border-box;"><svg data-icon-path="" data-node-path="" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; display: block;"><text x="50" y="54" text-anchor="middle" dominant-baseline="central" font-family="mc-anthropicons" font-size="90" fill="#f472b6"></text></svg></div><div data-frame-id="e3-bbb222" style="position: absolute; left: 10px; width: 50px; top: 10px; height: 50px; box-sizing: border-box; border-radius: 8px; box-shadow: rgba(34, 211, 238, 0.333) 0px 0px 60px 0px;"><div data-text-path="" data-node-path="" style="font-family: Geist, Arial, ui-sans-serif, system-ui, sans-serif; font-size: 20px; font-weight: 400; color: rgb(245, 165, 36); line-height: 1.2; margin: 0px; white-space: pre-wrap;"><b>RLHF</b></div></div><div data-frame-id="e4-bbb222" style="position: absolute; left: 128px; width: 600px; top: 100px; box-sizing: border-box;"><div data-text-path="" data-node-path="" style="font-family: Geist, Arial, ui-sans-serif, system-ui, sans-serif; font-size: 20px; font-weight: 400; color: rgb(184, 192, 202); line-height: 1.2; margin: 0px; white-space: pre-wrap;">RLVR</div></div></div></div></div></section>
+<section class="deck-slide" id="3" aria-roledescription="slide" aria-label="Slide 3 of 3" data-document-role="page" data-label="Thanks" data-speaker-notes="Closing."><div class="deck-fit"><div class="deck-scaler"><div style="width: 1920px; height: 1080px; position: relative; background: rgb(11, 13, 16); overflow: clip; contain: paint;" class="slide" data-canvas-width="1920" data-canvas-height="1080"><div data-frame-id="e1-ccc333" style="position: absolute; left: 128px; width: 600px; top: 100px; box-sizing: border-box;"><div data-text-path="" data-node-path="" style="font-family: Geist, Arial, ui-sans-serif, system-ui, sans-serif; font-size: 60px; font-weight: 400; color: rgb(238, 240, 242); line-height: 1.2; margin: 0px; white-space: pre-wrap;">Thank you</div></div></div></div></div></section>
+</main>
+<div class="deck-pager" aria-hidden="true"></div>
+</body>
+</html>
