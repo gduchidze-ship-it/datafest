@@ -270,3 +270,5 @@ svg text { font-family: 'KH Teka', 'Helvetica Neue', Helvetica, Arial, sans-seri
 .rolecard.logo .role-v { margin-top: 0; }
 .role-logo { flex: none; width: 76px; height: 76px; object-fit: contain; }
 .ex-impel.role-logo { border-radius: 20px; }
+.kcard.tk { padding: 36px 40px 40px; }
+.tk-v { margin: 36px 0 auto; height: 190px; }

@@ -278,7 +278,7 @@ notes = "Live code. One predicate and its probability. Many named questions in o
 fragment = "slides/27_takeaways.html"
 label = "Takeaways"
 notes = "Three things to take home. One: for every step, ask whether it is writing or deciding. Two: the model returns probabilities and your code makes the call. Three: keep the LLM for the cases that need it; at Impel that is about 10% of jailbreak checks and the bill is 68% lower. Questions."
-builds = [["n2"], ["n3"], ["qa"]]
+builds = [["n2"], ["n3"]]
 build_effect = "rise"
 
 [[slides]]
