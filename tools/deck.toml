@@ -128,14 +128,19 @@ builds = [["b1"]]
 build_effect = "rise"
 
 [[slides]]
-fragment = "slides/m_economics.html"
-label = "User Economics And Scaling"
-notes = "MOCKUP: replace the placeholders with real user and cost numbers for this year and next."
+fragment = "slides/econ_now.html"
+label = "2026: Machines Passed Humans"
+notes = "When we think about AI adoption we still picture a human typing into a chat box. The next million users of your product or API will be automated software pipelines. In 2026 this has already happened. Cloudflare data shows non-human traffic passed human traffic at 57.5%, driven by a 1,700% surge in AI agent requests. Inside enterprises, nearly two-thirds of production AI API calls are already structured machine decisions, yet they are only 15.5% of token spend because the outputs are tiny."
+
+[[slides]]
+fragment = "slides/econ_next.html"
+label = "2027-2031: Scale Goes Exponential"
+notes = "If 2026 was the crossover point, the next five years are where scale goes exponential. Gartner projects more than 10 billion autonomous agents online by 2030, and Cloudflare forecasts machine traffic reaching 1,000 to 1 over human traffic by 2031. Making decisions fast, typed and far cheaper triggers a rebound effect: cheaper decisions mean far more of them. When software can afford a million background judgments a minute, almost every digital interaction becomes machine-to-machine."
 
 [[slides]]
 fragment = "slides/why_decision_models.html"
 label = "Why Decision Models"
-notes = "Three reasons. About 10x faster than generating text. Input tokens only, output not charged. Every answer is typed and carries a probability."
+notes = "Software calling AI in the background does not want a conversational essay; it wants a fast, structured decision. On a batch of 100,000 requests at 1,000 input tokens: up to 96% cheaper, 4.20 dollars against 26 to 125 dollars for conversational LLMs. 70 to 114 milliseconds against 2.3 to 8.6 seconds. And zero schema errors against roughly 2 to 2.6% for LLMs."
 
 [[slides]]
 source = 9
@@ -172,17 +177,17 @@ notes = "Calibration is what makes a probability usable. Take every prediction w
 [[slides]]
 fragment = "slides/06_llm_vs_decision.html"
 label = "LLM vs decision model"
-notes = "An LLM generates text token by token, and you parse it. A decision model answers typed questions: a probability, a choice, a score. From OpenAI's guide: 1 to 400 questions per request, input tokens only at 10 cents per million on gpt-6-luna with output not charged, and about 10x faster than the Responses API. Use the LLM for plans, code and explanations; use the decision model to route, gate, classify and score."
+notes = "An LLM generates an answer one token at a time and you parse the text; even with strict prompting it can produce invalid JSON or pick an option you did not allow. A decision model evaluates the input in a single forward pass and returns typed answers with exact probabilities, for example Billing 99.8%, Tech 0.1%, Sales 0.1%, so code can apply hard logic to the model's belief."
 
 [[slides]]
-fragment = "slides/m_encoder.html"
-label = "Decision Models Vs Encoder-Only Classifiers"
-notes = "MOCKUP: fill in how a decision model compares with a fine-tuned encoder-only classifier on training, labels and flexibility."
+fragment = "slides/classifiers.html"
+label = "Decision Models Vs Classifiers"
+notes = "Decision models share DNA with classifiers but add runtime flexibility and multi-tasking. All three give a probability over choices. A traditional classifier has its labels fixed at training; zero-shot and decision models take them at inference. Only a decision model answers many typed questions in one call, and ordered scoring and yes/no are native primitives."
 
 [[slides]]
 fragment = "slides/limitations.html"
 label = "Decision Model Limitations"
-notes = "Five risks to test on your own data. Long context costs more and dilutes evidence. Evidence in the middle of a long input can be missed. Specialised knowledge. Overconfidence: right answer, wrong probability. Inherited bias. These are risks of this model class, not published figures for one product."
+notes = "Speed and schema safety do not make decision models infallible. One: zero syntax errors is not 100% accuracy. Across broad benchmarks a decision model scores 67.8% against 74.1% for a frontier reasoning LLM, and if the right answer is not among the allowed choices it is forced to guess. Two: a single forward pass has no scratchpad, so it breaks on arithmetic, date ordering and multi-hop logic, and it is sensitive to phrasing. Three: at runtime you get a probability, not a written audit trail; a raw 0.91 will not satisfy a compliance auditor. Four: hostile text in a payload can still push probabilities toward an allowed but dangerous action. So the production pattern is confidence-based routing: the decision model takes the 80 to 90% of routine traffic where confidence exceeds 95%, and the rest escalates to a reasoning LLM or a human."
 
 [[slides]]
 source = 5
