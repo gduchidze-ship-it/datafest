@@ -98,6 +98,7 @@ svg_edit = [ { frame = "e0", pattern = '<rect width="1920" height="1080" fill="u
 </g>
 </g>
 ''' } ]
+prepend = "slides/_cover_bg.html"
 alt = [ { frame = "e0", text = "Animated timeline from the 2017 Transformer through BERT and GPT, ChatGPT and reasoning models to the 2026 decision branch" } ]
 append = "slides/_logo_top.html"
 
@@ -113,6 +114,7 @@ style = [
   { frame = "e3", set = { left = "1000px", top = "296px" } },
   { frame = "e4", set = { left = "994px", top = "356px" } },
 ]
+prepend = "slides/_speaker_bg.html"
 append = "slides/_speaker.html"
 
 [[slides]]
@@ -124,8 +126,6 @@ notes = "The route for the talk: why agents are your next users and what that do
 fragment = "slides/04_fanout.html"
 label = "Your Next 1 Million Users Are Not Humans"
 notes = "One person types one request. The agent turns it into many calls against your software: search, read, call an API, run tests, retry. Your next million users are these machine callers. Click: every one of those calls starts with a decision. Which tool, is it safe, is it done. The diagram is illustrative."
-builds = [["b1"]]
-build_effect = "rise"
 
 [[slides]]
 fragment = "slides/econ_now.html"
