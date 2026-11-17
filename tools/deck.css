@@ -255,3 +255,6 @@ svg text { font-family: 'KH Teka', 'Helvetica Neue', Helvetica, Arial, sans-seri
 .chain { flex-wrap: nowrap; }
 .chain.sec .ch { border-color: #8DDEB7; }
 .ch-a { color: #B6B2C7; font-size: 22px; }
+.kcard.sel { padding: 30px 28px; }
+.sel-i { width: 150px; height: 150px; margin: auto 0; }
+.lim { height: 160px; }

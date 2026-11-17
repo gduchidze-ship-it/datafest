@@ -242,29 +242,13 @@ build_effect = "rise"
 
 [[slides]]
 fragment = "slides/effective.html"
-label = "Why Effective And Efficient Agents Matter"
-notes = "Per-step accuracy is not system success: 95% per step is 36% after twenty independent steps. Only evals tell you which model a decision needs. And a decision model that guards the agent is one layer of defence, followed by code rules, permissions and a human."
+label = "Make Evals A First-Class Citizen"
+notes = "Solving real business problems with AI is not about the latest and largest model or the newest agent framework. It is about making evals a first-class citizen and climbing them iteratively with your client's feedback. The evals you need are ones you find yourself; general metrics give a false sense of progress. One: implement a first working version. Two: generate synthetic inputs and compute outputs, the traces. Three: read a sample of traces to find the main failures, the error categories. Four: build simple regex or LLM-as-a-judge evals that measure them. Five: tune prompts, tools, permissions and retrieval, and re-evaluate. Then go back to three. When the set of error categories stops growing, you have your evals, and climbing them moves the system toward what the client needs."
 
 [[slides]]
-source = 19
-label = "LLM or Decisions? Only evals know."
+fragment = "slides/model_selection.html"
+label = "Model Selection For Each Task"
 notes = "Model choice is now per decision, not per app. The workflow: keep a decision registry, build a golden set for each decision, make both models answer the same schema, run A/B or a cascade with Decisions first and the LLM when confidence is low, and lock it in with CI regression tests."
-text = [ { frame = "e1", html = "Model Selection For Each Task" } ]
-drop = ["e8", "e9", "e10", "e11", "e12", "e13", "e14", "e15", "e16", "e17", "e18", "e19", "e20"]
-# only the five-step pipeline stays; the two metric panels below it are gone
-style = [
-  { frame = "e0", set = { top = "150px" } },
-  { frame = "e3", set = { top = "642px" } },
-  { frame = "e4", set = { top = "642px" } },
-  { frame = "e5", set = { top = "642px" } },
-  { frame = "e6", set = { top = "642px" } },
-  { frame = "e7", set = { top = "642px" } },
-]
-svg_edit = [
-  { frame = "e0", pattern = '<rect width="1920" height="1080" fill="url\(#g\)"/>', repl = "" },
-  { frame = "e0", pattern = '(?s)<g fill="#12161C" stroke="#232A33" stroke-width="2"><rect x="128" y="600".*(?=</svg>)', repl = "" },
-]
-alt = [ { frame = "e0", text = "Animated eval pipeline: a decision travels through registry, golden set, same schema, A/B or cascade, and CI regression" } ]
 
 [[slides]]
 fragment = "slides/case_intro.html"
