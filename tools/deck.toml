@@ -118,7 +118,7 @@ append = "slides/_speaker.html"
 [[slides]]
 fragment = "slides/03_agenda.html"
 label = "Agenda"
-notes = "Eight parts. Why agents are your next users, what a decision model is, how these models are trained, what a harness is, how to avoid slop, the Impel jailbreak case, then live code, and takeaways."
+notes = "The route for the talk: why agents are your next users and what that does to the numbers, what a decision model is and where it stops, how these models are trained, what a harness is, why evals and security matter, the Impel jailbreak case, then live code and takeaways."
 
 [[slides]]
 fragment = "slides/04_fanout.html"
@@ -128,23 +128,21 @@ builds = [["b1"]]
 build_effect = "rise"
 
 [[slides]]
-fragment = "slides/05_mostly_decisions.html"
-label = "An agent run is mostly decisions"
-notes = "Take one coding-agent run and tag every step. Two steps write: deciding what to read and writing the change. Six steps decide: routing, gating the edit, diagnosing the test failure, the risky command, the doc page, the done check. Click: six of eight are decisions, and today each one is a full LLM call."
-builds = [["b1"]]
-build_effect = "rise"
+fragment = "slides/m_economics.html"
+label = "User Economics And Scaling"
+notes = "MOCKUP: replace the placeholders with real user and cost numbers for this year and next."
 
 [[slides]]
-fragment = "slides/06_llm_vs_decision.html"
-label = "LLM vs decision model"
-notes = "An LLM generates text token by token, and you parse it. A decision model answers typed questions: a probability, a choice, a score. From OpenAI's guide: 1 to 400 questions per request, input tokens only at 10 cents per million on gpt-6-luna with output not charged, and about 10x faster than the Responses API. Use the LLM for plans, code and explanations; use the decision model to route, gate, classify and score."
+fragment = "slides/why_decision_models.html"
+label = "Why Decision Models"
+notes = "Three reasons. About 10x faster than generating text. Input tokens only, output not charged. Every answer is typed and carries a probability."
 
 [[slides]]
 source = 9
 label = "How Decisions works"
 notes = "Input: shared evidence plus a list of questions. One Decisions call answers them together, each with a typed result. Three primitives. predicate checks a condition and returns the probability that it is true: an if. choice selects one of your values: a switch. score rates against ordered levels and returns the probability-weighted average of the level indices: a slider. One request takes 1 to 400 questions."
 text = [
-  { frame = "e2", html = "How Decisions works" },
+  { frame = "e2", html = "How Decision Models Work" },
   { frame = "e5", html = "Decisions" },
   { frame = "e6", html = "choice" },
   { frame = "e7", html = "switch · one of your values" },
@@ -170,6 +168,21 @@ append = "slides/_how_line.html"
 fragment = "slides/09_calibration.html"
 label = "Calibration"
 notes = "Calibration is what makes a probability usable. Take every prediction where the model said 0.5 and put them in one jar; every 0.8 in another; every 0.9 in a third. If the model is calibrated, about half of the 0.5 jar is right, 8 of 10 in the 0.8 jar, 9 of 10 in the 0.9 jar. Each jar is one point on a reliability plot, and the points land on the diagonal. The jars and the plot are illustrative. 0.8 means about 80% of these predictions are right, not that this one is. So measure your own reliability curve before code sets thresholds: golden set, shadow mode, reliability curve, thresholds, then conformal guarantees."
+
+[[slides]]
+fragment = "slides/06_llm_vs_decision.html"
+label = "LLM vs decision model"
+notes = "An LLM generates text token by token, and you parse it. A decision model answers typed questions: a probability, a choice, a score. From OpenAI's guide: 1 to 400 questions per request, input tokens only at 10 cents per million on gpt-6-luna with output not charged, and about 10x faster than the Responses API. Use the LLM for plans, code and explanations; use the decision model to route, gate, classify and score."
+
+[[slides]]
+fragment = "slides/m_encoder.html"
+label = "Decision Models Vs Encoder-Only Classifiers"
+notes = "MOCKUP: fill in how a decision model compares with a fine-tuned encoder-only classifier on training, labels and flexibility."
+
+[[slides]]
+fragment = "slides/limitations.html"
+label = "Decision Model Limitations"
+notes = "Five risks to test on your own data. Long context costs more and dilutes evidence. Evidence in the middle of a long input can be missed. Specialised knowledge. Overconfidence: right answer, wrong probability. Inherited bias. These are risks of this model class, not published figures for one product."
 
 [[slides]]
 source = 5
@@ -216,10 +229,22 @@ label = "Agent = model + harness"
 notes = "An agent is a model plus a harness. The model writes text and code. Everything around it is the harness: routing, the loop, tools, context, permissions, memory, checks, handoff. Claude Code, Codex and a LangGraph runner are all harnesses. Look at the question under each job. Eight harness jobs, and every one is a question with a typed answer."
 
 [[slides]]
+fragment = "slides/05_mostly_decisions.html"
+label = "An agent run is mostly decisions"
+notes = "Take one coding-agent run and tag every step. Two steps write: deciding what to read and writing the change. Six steps decide: routing, gating the edit, diagnosing the test failure, the risky command, the doc page, the done check. Click: six of eight are decisions, and today each one is a full LLM call."
+builds = [["b1"]]
+build_effect = "rise"
+
+[[slides]]
+fragment = "slides/effective.html"
+label = "Why Effective And Efficient Agents Matter"
+notes = "Per-step accuracy is not system success: 95% per step is 36% after twenty independent steps. Only evals tell you which model a decision needs. And a decision model that guards the agent is one layer of defence, followed by code rules, permissions and a human."
+
+[[slides]]
 source = 19
 label = "LLM or Decisions? Only evals know."
 notes = "Model choice is now per decision, not per app. The workflow: keep a decision registry, build a golden set for each decision, make both models answer the same schema, run A/B or a cascade with Decisions first and the LLM when confidence is low, and lock it in with CI regression tests."
-text = [ { frame = "e1", html = "LLM or Decisions? Only evals know." } ]
+text = [ { frame = "e1", html = "Model Selection For Each Task" } ]
 drop = ["e8", "e9", "e10", "e11", "e12", "e13", "e14", "e15", "e16", "e17", "e18", "e19", "e20"]
 # only the five-step pipeline stays; the two metric panels below it are gone
 style = [
@@ -235,6 +260,11 @@ svg_edit = [
   { frame = "e0", pattern = '(?s)<g fill="#12161C" stroke="#232A33" stroke-width="2"><rect x="128" y="600".*(?=</svg>)', repl = "" },
 ]
 alt = [ { frame = "e0", text = "Animated eval pipeline: a decision travels through registry, golden set, same schema, A/B or cascade, and CI regression" } ]
+
+[[slides]]
+fragment = "slides/case_intro.html"
+label = "How Impel Cut Costs With The Decisions API"
+notes = "The Impel case: jailbreak detection on every inbound message. Before, after, result."
 
 [[slides]]
 fragment = "slides/21_jb_before.html"
