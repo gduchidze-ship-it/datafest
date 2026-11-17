@@ -258,3 +258,7 @@ svg text { font-family: 'KH Teka', 'Helvetica Neue', Helvetica, Arial, sans-seri
 .kcard.sel { padding: 30px 28px; }
 .sel-i { width: 150px; height: 150px; margin: auto 0; }
 .lim { height: 160px; }
+.cmp2 { margin-top: auto; align-self: stretch; display: flex; flex-direction: column; }
+.cmp2-r { display: flex; justify-content: space-between; align-items: baseline; border-top: 2px solid #5E5A62; padding: 14px 0; }
+.cmp2-l { font-size: 22px; color: #B6B2C7; font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; }
+.cmp2-v { font-size: 30px; }

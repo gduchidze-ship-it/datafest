@@ -140,7 +140,7 @@ notes = "If 2026 was the crossover point, the next five years are where scale go
 [[slides]]
 fragment = "slides/why_decision_models.html"
 label = "Why Decision Models"
-notes = "Software calling AI in the background does not want a conversational essay; it wants a fast, structured decision. On a batch of 100,000 requests at 1,000 input tokens: up to 96% cheaper, 4.20 dollars against 26 to 125 dollars for conversational LLMs. 70 to 114 milliseconds against 2.3 to 8.6 seconds. And zero schema errors against roughly 2 to 2.6% for LLMs."
+notes = "Software calling AI in the background does not want a conversational essay; it wants a fast, structured decision. Speed: OpenAI claims the Decisions API is up to 10x faster than GPT-6 Luna through the Responses API; independent testing puts it at roughly 4.6 to 5x. About 150 milliseconds per decision, 255 in independent tests, against roughly 1.2 to 1.6 seconds. Price: input is the same, 10 cents per million tokens, with cached input at 1 cent. The difference is output: the Decisions API has no output charge because it returns bounded selections and probabilities, while the Responses API charges 50 to 60 cents per million output tokens."
 
 [[slides]]
 source = 9
