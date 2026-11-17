@@ -1,3 +1,24 @@
-<div data-frame-id="t" class="fx h1" style="left:128px;top:96px;width:1500px">Why Most Agent Calls Are Decisions</div>
-<div data-frame-id="steps" class="fx tiles" style="left:128px;top:330px;width:1664px"><div class="tile decide"><span class="tile-n">01</span><span class="tile-t">Route</span><span class="tile-k">Decide</span></div><div class="tile write"><span class="tile-n">02</span><span class="tile-t">Read</span><span class="tile-k">Write</span></div><div class="tile write"><span class="tile-n">03</span><span class="tile-t">Edit Code</span><span class="tile-k">Write</span></div><div class="tile decide"><span class="tile-n">04</span><span class="tile-t">Gate The Edit</span><span class="tile-k">Decide</span></div><div class="tile decide"><span class="tile-n">05</span><span class="tile-t">Test Fails</span><span class="tile-k">Decide</span></div><div class="tile decide"><span class="tile-n">06</span><span class="tile-t">Risky Command</span><span class="tile-k">Decide</span></div><div class="tile decide"><span class="tile-n">07</span><span class="tile-t">Doc Page</span><span class="tile-k">Decide</span></div><div class="tile decide"><span class="tile-n">08</span><span class="tile-t">Done?</span><span class="tile-k">Decide</span></div></div>
-<div data-frame-id="b1" class="fx stat" style="left:128px;top:660px;width:1664px"><div class="stat-n c-neon">6 Of 8</div><div><div class="stat-l">Steps Are Decisions</div><div class="stat-s">Today Each One Is A Full LLM Call</div></div></div>
+<div data-frame-id="track" class="fx" style="left:0;top:0;width:1920px;height:1080px"><svg viewBox="0 0 1920 1080" width="1920" height="1080" fill="none" aria-label="An agent run drawn as a track of eight steps: six diamonds for decisions and two squares for writing, with a ring showing six of eight">
+<path d="M128 430H1792" stroke="#5E5A62" stroke-width="4" stroke-linecap="round"/>
+<circle r="12" fill="#FFFFFF"><animateMotion path="M128 430H1792" dur="7s" repeatCount="indefinite"/></circle>
+<polygon points="220,372 278,430 220,488 162,430" fill="#121212" stroke="#A088EB" stroke-width="5" stroke-linejoin="round"/><polygon points="220,410 240,430 220,450 200,430" fill="#A088EB"/>
+<text x="220" y="542" font-size="28" fill="#FFFFFF" text-anchor="middle">Route</text>
+<rect x="383" y="382" width="96" height="96" rx="22" fill="#121212" stroke="#D1FF8B" stroke-width="5"/><path d="M411 420h40M411 442h28" stroke="#D1FF8B" stroke-width="6" stroke-linecap="round"/>
+<text x="431" y="542" font-size="28" fill="#FFFFFF" text-anchor="middle">Read</text>
+<rect x="594" y="382" width="96" height="96" rx="22" fill="#121212" stroke="#D1FF8B" stroke-width="5"/><path d="M622 420h40M622 442h28" stroke="#D1FF8B" stroke-width="6" stroke-linecap="round"/>
+<text x="642" y="542" font-size="28" fill="#FFFFFF" text-anchor="middle">Edit Code</text>
+<polygon points="853,372 911,430 853,488 795,430" fill="#121212" stroke="#A088EB" stroke-width="5" stroke-linejoin="round"/><polygon points="853,410 873,430 853,450 833,430" fill="#A088EB"/>
+<text x="853" y="542" font-size="28" fill="#FFFFFF" text-anchor="middle">Gate Edit</text>
+<polygon points="1064,372 1122,430 1064,488 1006,430" fill="#121212" stroke="#A088EB" stroke-width="5" stroke-linejoin="round"/><polygon points="1064,410 1084,430 1064,450 1044,430" fill="#A088EB"/>
+<text x="1064" y="542" font-size="28" fill="#FFFFFF" text-anchor="middle">Test Fails</text>
+<polygon points="1275,372 1333,430 1275,488 1217,430" fill="#121212" stroke="#A088EB" stroke-width="5" stroke-linejoin="round"/><polygon points="1275,410 1295,430 1275,450 1255,430" fill="#A088EB"/>
+<text x="1275" y="542" font-size="28" fill="#FFFFFF" text-anchor="middle">Risky Cmd</text>
+<polygon points="1486,372 1544,430 1486,488 1428,430" fill="#121212" stroke="#A088EB" stroke-width="5" stroke-linejoin="round"/><polygon points="1486,410 1506,430 1486,450 1466,430" fill="#A088EB"/>
+<text x="1486" y="542" font-size="28" fill="#FFFFFF" text-anchor="middle">Doc Page</text>
+<polygon points="1697,372 1755,430 1697,488 1639,430" fill="#121212" stroke="#A088EB" stroke-width="5" stroke-linejoin="round"/><polygon points="1697,410 1717,430 1697,450 1677,430" fill="#A088EB"/>
+<text x="1697" y="542" font-size="28" fill="#FFFFFF" text-anchor="middle">Done?</text>
+<circle cx="260" cy="800" r="96" stroke="#D1FF8B" stroke-width="30"/><circle cx="260" cy="800" r="96" stroke="#A088EB" stroke-width="30" stroke-dasharray="452.4 603.2" transform="rotate(-90 260 800)"/>
+<polygon points="1500,770 1522,792 1500,814 1478,792" fill="#A088EB"/><text x="1540" y="802" font-size="28" fill="#FFFFFF" text-anchor="start">Decide</text><rect x="1480" y="838" width="40" height="40" rx="10" stroke="#D1FF8B" stroke-width="4"/><text x="1540" y="868" font-size="28" fill="#FFFFFF" text-anchor="start">Write</text>
+</svg></div>
+<div data-frame-id="t" class="fx h1" style="left:128px;top:96px;width:1664px">Why Most Agent Calls Are Decisions</div>
+<div data-frame-id="stat" class="fx stat" style="left:420px;top:726px;width:1000px"><div class="stat-n c-neon">6 Of 8</div><div><div class="stat-l">Steps Are Decisions</div></div></div>

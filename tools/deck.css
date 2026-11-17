@@ -263,3 +263,10 @@ svg text { font-family: 'KH Teka', 'Helvetica Neue', Helvetica, Arial, sans-seri
 .cmp2-l { font-size: 22px; color: #B6B2C7; font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; }
 .cmp2-v { font-size: 30px; }
 .ex-logo { flex: none; width: 110px; height: 110px; object-fit: contain; }
+.excard { height: 170px; }
+.ex-impel { display: flex; align-items: center; justify-content: center; border-radius: 26px; background: #6C44E4; }
+.exs { gap: 16px; }
+.rolecard.logo { display: flex; align-items: center; gap: 22px; padding: 22px 26px; }
+.rolecard.logo .role-v { margin-top: 0; }
+.role-logo { flex: none; width: 76px; height: 76px; object-fit: contain; }
+.ex-impel.role-logo { border-radius: 20px; }

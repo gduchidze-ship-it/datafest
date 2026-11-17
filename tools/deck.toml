@@ -236,9 +236,7 @@ notes = "An agent is a model plus a harness. The model writes text and code. Eve
 [[slides]]
 fragment = "slides/05_mostly_decisions.html"
 label = "An agent run is mostly decisions"
-notes = "Take one coding-agent run and tag every step. Two steps write: deciding what to read and writing the change. Six steps decide: routing, gating the edit, diagnosing the test failure, the risky command, the doc page, the done check. Click: six of eight are decisions, and today each one is a full LLM call."
-builds = [["b1"]]
-build_effect = "rise"
+notes = "Take one coding-agent run and tag every step. Two steps write: deciding what to read and writing the change. Six steps decide: routing, gating the edit, diagnosing the test failure, the risky command, the doc page, the done check. Six of eight are decisions, and today each one is a full LLM call."
 
 [[slides]]
 fragment = "slides/effective.html"
@@ -263,7 +261,7 @@ notes = "The Impel case. Every inbound message was screened for jailbreaks by GP
 [[slides]]
 fragment = "slides/22_jb_after.html"
 label = "After: cheap checks first, the LLM last"
-notes = "The new pipeline. Every message goes to a security Guardrail and one Decisions API call in parallel. If neither flags it, the message is allowed: that is about 90% of traffic. Only what they flag, about 10%, goes to 6.1 Terra, an LLM judge, which rules allow or block. The LLM still makes the hard calls. It just stops making the easy ones."
+notes = "The new pipeline. Every message goes to a security Guardrail and one Decisions API call in parallel. If neither flags it, the message is allowed: that is about 90% of traffic. Only what they flag, about 10%, goes to 6.1 Terra, the LLM layer, which rules allow or block. The LLM still makes the hard calls. It just stops making the easy ones."
 
 [[slides]]
 fragment = "slides/23_jb_result.html"
