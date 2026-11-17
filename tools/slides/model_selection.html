@@ -1,3 +1,189 @@
 <div data-frame-id="t" class="fx h1" style="left:128px;top:96px;width:1664px">Model Selection For Each Task</div>
 <div data-frame-id="k" class="fx take" style="left:128px;top:190px;width:1500px">Model Choice Is Now <span class="c-white">Per Decision</span>, Not Per App</div>
-<div data-frame-id="cards" class="fx cards" style="left:128px;top:320px;width:1664px;grid-template-columns:repeat(5,1fr);gap:20px"><div class="kcard sel" style="height:520px"><span class="k-n">01</span><svg viewBox="0 0 24 24" fill="none" stroke="#A088EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="sel-i" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></svg><span class="k-h" style="font-size:38px">Decision Registry</span></div><div class="kcard sel" style="height:520px"><span class="k-n">02</span><svg viewBox="0 0 24 24" fill="none" stroke="#D1FF8B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="sel-i" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.2 1.1 6.1L12 16.8 6.6 19.7l1.1-6.1L3.2 9.4l6.1-.8z"/></svg><span class="k-h" style="font-size:38px">Golden Set</span></div><div class="kcard sel" style="height:520px"><span class="k-n">03</span><svg viewBox="0 0 24 24" fill="none" stroke="#A088EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="sel-i" aria-hidden="true"><path d="M8 3c-2 0-3 1-3 3v3c0 1.5-1 3-2 3 1 0 2 1.500 2 3v3c0 2 1 3 3 3"/><path d="M16 3c2 0 3 1 3 3v3c0 1.5 1 3 2 3-1 0-2 1.500-2 3v3c0 2-1 3-3 3"/></svg><span class="k-h" style="font-size:38px">Same Schema</span></div><div class="kcard sel" style="height:520px"><span class="k-n">04</span><svg viewBox="0 0 24 24" fill="none" stroke="#A088EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="sel-i" aria-hidden="true"><path d="M3 12h5l4-6h9"/><path d="M8 12l4 6h9"/><path d="M18 3l3 3-3 3M18 15l3 3-3 3"/></svg><span class="k-h" style="font-size:38px">A / B Or Cascade</span></div><div class="kcard sel" style="height:520px"><span class="k-n">05</span><svg viewBox="0 0 24 24" fill="none" stroke="#A088EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="sel-i" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/></svg><span class="k-h" style="font-size:38px">CI Regression</span></div></div>
+<div data-frame-id="r1" class="fx" style="left:157px;top:270px;width:1605px;height:306px"><svg viewBox="136 310 944 180" width="1605" height="306" aria-label="Animated: a decision travels through the decision registry, the golden set and the same schema">
+<defs>
+<pattern id="g" width="64" height="64" patternUnits="userSpaceOnUse"><path d="M64 0H0V64" fill="none" stroke="#141921" stroke-width="1"/></pattern>
+<filter id="gl" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<linearGradient id="trk" x1="0" x2="1"><stop offset="0" stop-color="#22D3EE" stop-opacity="0.1"/><stop offset="0.5" stop-color="#22D3EE" stop-opacity="0.5"/><stop offset="1" stop-color="#22D3EE" stop-opacity="0.1"/></linearGradient>
+<linearGradient id="shim" x1="0" x2="1"><stop offset="0" stop-color="#FDE68A" stop-opacity="0"/><stop offset="0.5" stop-color="#FDE68A" stop-opacity="0.6"/><stop offset="1" stop-color="#FDE68A" stop-opacity="0"/></linearGradient>
+<clipPath id="gc"><rect x="578" y="352" width="60" height="80" rx="8"/></clipPath>
+</defs>
+
+
+
+<line x1="146" y1="400" x2="1774" y2="400" stroke="url(#trk)" stroke-width="4" stroke-dasharray="10 10"><animate attributeName="stroke-dashoffset" from="0" to="-40" dur="1s" repeatCount="indefinite"/></line>
+<g fill="#12161C" stroke="#232A33" stroke-width="2">
+<rect x="146" y="325" width="220" height="150" rx="20"/><rect x="498" y="325" width="220" height="150" rx="20"/><rect x="850" y="325" width="220" height="150" rx="20"/><rect x="1202" y="325" width="220" height="150" rx="20"/><rect x="1554" y="325" width="220" height="150" rx="20"/>
+</g>
+
+<g fill="none" stroke="#22D3EE" stroke-width="3" filter="url(#gl)">
+<rect x="146" y="325" width="220" height="150" rx="20" opacity="0"><animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.03;0.07;0.16;1" dur="6s" repeatCount="indefinite"/></rect>
+<rect x="498" y="325" width="220" height="150" rx="20" opacity="0"><animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.24;0.28;0.37;1" dur="6s" repeatCount="indefinite"/></rect>
+<rect x="850" y="325" width="220" height="150" rx="20" opacity="0"><animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.46;0.5;0.59;1" dur="6s" repeatCount="indefinite"/></rect>
+<rect x="1202" y="325" width="220" height="150" rx="20" opacity="0"><animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.68;0.72;0.81;1" dur="6s" repeatCount="indefinite"/></rect>
+<rect x="1554" y="325" width="220" height="150" rx="20" opacity="0"><animate attributeName="opacity" values="0;0;1;0;0;0" keyTimes="0;0.89;0.93;0.99;0.995;1" dur="6s" repeatCount="indefinite"/></rect>
+</g>
+
+
+<g fill="#1E252E"><rect x="186" y="347" width="140" height="18" rx="5"/><rect x="186" y="373" width="140" height="18" rx="5"/><rect x="186" y="399" width="140" height="18" rx="5"/><rect x="186" y="425" width="140" height="18" rx="5"/></g>
+<g fill="#22D3EE">
+<rect x="186" y="347" width="140" height="18" rx="5" opacity="0.15"><animate attributeName="opacity" values="0.15;0.9;0.15;0.15" keyTimes="0;0.1;0.25;1" dur="2.4s" repeatCount="indefinite"/></rect>
+<rect x="186" y="373" width="140" height="18" rx="5" opacity="0.15"><animate attributeName="opacity" values="0.15;0.15;0.9;0.15;0.15" keyTimes="0;0.25;0.35;0.5;1" dur="2.4s" repeatCount="indefinite"/></rect>
+<rect x="186" y="399" width="140" height="18" rx="5" opacity="0.15"><animate attributeName="opacity" values="0.15;0.15;0.9;0.15;0.15" keyTimes="0;0.5;0.6;0.75;1" dur="2.4s" repeatCount="indefinite"/></rect>
+<rect x="186" y="425" width="140" height="18" rx="5" opacity="0.15"><animate attributeName="opacity" values="0.15;0.15;0.9;0.15" keyTimes="0;0.75;0.85;1" dur="2.4s" repeatCount="indefinite"/></rect>
+</g>
+<g fill="#0B0D10"><polygon points="198,350 204,356 198,362 192,356"/><polygon points="198,376 204,382 198,388 192,382"/><polygon points="198,402 204,408 198,414 192,408"/><polygon points="198,428 204,434 198,440 192,434"/></g>
+
+
+<g fill="#161B22" stroke="#FDE68A" stroke-opacity="0.5" stroke-width="2">
+<rect x="578" y="352" width="60" height="80" rx="8"><animateTransform attributeName="transform" type="rotate" values="-8 608 440;-18 608 440;-8 608 440" dur="3s" repeatCount="indefinite"/></rect>
+<rect x="578" y="352" width="60" height="80" rx="8"><animateTransform attributeName="transform" type="rotate" values="8 608 440;18 608 440;8 608 440" dur="3s" repeatCount="indefinite"/></rect>
+<rect x="578" y="352" width="60" height="80" rx="8" fill="#1C1A12" stroke-opacity="1"/>
+</g>
+<polygon points="608,370 613,384 628,384 616,393 620,407 608,398 596,407 600,393 588,384 603,384" fill="#FDE68A" filter="url(#gl)"><animateTransform attributeName="transform" type="rotate" values="0 608 390;72 608 390" dur="3s" repeatCount="indefinite"/></polygon>
+<g fill="#FDE68A" opacity="0.55"><rect x="590" y="414" width="36" height="4" rx="2"/><rect x="594" y="422" width="28" height="4" rx="2"/></g>
+<rect x="540" y="352" width="30" height="80" fill="url(#shim)" clip-path="url(#gc)"><animate attributeName="x" values="540;650;650" keyTimes="0;0.5;1" dur="2.5s" repeatCount="indefinite"/></rect>
+
+
+<g fill="none" stroke="#7D8794" stroke-width="5" stroke-linecap="round">
+<path d="M926 345 Q908 345 908 362 L908 385 Q908 400 894 400 Q908 400 908 415 L908 438 Q908 455 926 455"/>
+<path d="M994 345 Q1012 345 1012 362 L1012 385 Q1012 400 1026 400 Q1012 400 1012 415 L1012 438 Q1012 455 994 455"/>
+</g>
+<rect x="934" y="380" width="52" height="40" rx="8" fill="none" stroke="#EEF0F2" stroke-opacity="0.5" stroke-width="2" stroke-dasharray="6 5"><animate attributeName="stroke-dashoffset" from="0" to="-22" dur="1s" repeatCount="indefinite"/></rect>
+<polygon points="0,-14 14,0 0,14 -14,0" fill="#22D3EE" filter="url(#gl)">
+<animateTransform attributeName="transform" type="translate" values="960 335;960 400;960 400;960 335;960 335" keyTimes="0;0.15;0.4;0.5;1" dur="3s" repeatCount="indefinite"/>
+<animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.1;0.4;0.5;1" dur="3s" repeatCount="indefinite"/></polygon>
+<circle r="13" fill="#F5A524" filter="url(#gl)" opacity="0">
+<animateTransform attributeName="transform" type="translate" values="960 335;960 335;960 400;960 400;960 335" keyTimes="0;0.5;0.65;0.9;1" dur="3s" repeatCount="indefinite"/>
+<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.5;0.6;0.9;1" dur="3s" repeatCount="indefinite"/></circle>
+
+
+<g fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+<path d="M1222 400 L1250 400 L1278 368 L1374 368 L1402 400" stroke="#22D3EE" stroke-opacity="0.55"/>
+<path d="M1250 400 L1278 432 L1374 432 L1402 400" stroke="#F5A524" stroke-opacity="0.55"/>
+</g>
+<rect x="1322" y="352" width="6" height="32" rx="3" fill="#EEF0F2"><animate attributeName="opacity" values="1;0.4;1" dur="1.5s" repeatCount="indefinite"/></rect>
+<circle r="7" fill="#22D3EE" filter="url(#gl)"><animateMotion path="M1222 400 L1250 400 L1278 368 L1374 368 L1402 400" dur="2s" repeatCount="indefinite"/></circle>
+<circle r="7" fill="#F5A524" filter="url(#gl)"><animateMotion path="M1222 400 L1250 400 L1278 432 L1374 432 L1402 400" dur="2s" begin="0.7s" repeatCount="indefinite"/></circle>
+<circle r="7" fill="#22D3EE" filter="url(#gl)">
+<animateMotion path="M1222 400 L1250 400 L1278 368 L1316 368 L1340 432 L1374 432 L1402 400" dur="2.6s" begin="1.3s" repeatCount="indefinite"/>
+<animate attributeName="fill" values="#22D3EE;#22D3EE;#F5A524;#F5A524" keyTimes="0;0.4;0.5;1" dur="2.6s" begin="1.3s" repeatCount="indefinite"/></circle>
+
+
+<g fill="#1E252E"><rect x="1598" y="368" width="20" height="20" rx="4"/><rect x="1626" y="368" width="20" height="20" rx="4"/><rect x="1654" y="368" width="20" height="20" rx="4"/><rect x="1682" y="368" width="20" height="20" rx="4"/><rect x="1710" y="368" width="20" height="20" rx="4"/></g>
+<g fill="#22D3EE">
+<rect x="1598" y="368" width="20" height="20" rx="4" opacity="0"><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.9;1" dur="4s" repeatCount="indefinite"/></rect>
+<rect x="1626" y="368" width="20" height="20" rx="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.14;0.18;0.9;1" dur="4s" repeatCount="indefinite"/></rect>
+<rect x="1654" y="368" width="20" height="20" rx="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.24;0.28;0.9;1" dur="4s" repeatCount="indefinite"/></rect>
+<rect x="1682" y="368" width="20" height="20" rx="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.6;0.64;0.9;1" dur="4s" repeatCount="indefinite"/></rect>
+<rect x="1710" y="368" width="20" height="20" rx="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.7;0.74;0.9;1" dur="4s" repeatCount="indefinite"/></rect>
+</g>
+<rect x="1682" y="368" width="20" height="20" rx="4" fill="#F25F5C" opacity="0"><animate attributeName="opacity" values="0;0;1;0.3;1;0;0" keyTimes="0;0.34;0.38;0.44;0.5;0.6;1" dur="4s" repeatCount="indefinite"/></rect>
+<rect x="1614" y="408" width="100" height="22" rx="11" fill="#22D3EE" opacity="0.8"><animate attributeName="fill" values="#22D3EE;#22D3EE;#F25F5C;#F25F5C;#22D3EE;#22D3EE" keyTimes="0;0.34;0.38;0.58;0.62;1" dur="4s" repeatCount="indefinite"/></rect>
+<circle cx="1664" cy="448" r="9" fill="none" stroke="#7D8794" stroke-width="3" stroke-dasharray="14 44"><animateTransform attributeName="transform" type="rotate" from="0 1664 448" to="360 1664 448" dur="1s" repeatCount="indefinite"/></circle>
+
+
+<g>
+<animateMotion path="M146 400 L1774 400" dur="6s" repeatCount="indefinite"/>
+<circle r="20" fill="none" stroke="#22D3EE" stroke-width="2" opacity="0.6"><animate attributeName="r" values="16;26;16" dur="1s" repeatCount="indefinite"/></circle>
+<polygon points="0,-12 12,0 0,12 -12,0" fill="#22D3EE" stroke="#0B0D10" stroke-width="2" filter="url(#gl)"/>
+</g>
+
+
+</svg></div>
+<div data-frame-id="r2" class="fx" style="left:457px;top:640px;width:1006px;height:306px"><svg viewBox="1192 310 592 180" width="1006" height="306" aria-label="Animated: A/B or cascade between the two models, then CI regression">
+<defs>
+<pattern id="g" width="64" height="64" patternUnits="userSpaceOnUse"><path d="M64 0H0V64" fill="none" stroke="#141921" stroke-width="1"/></pattern>
+<filter id="gl" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<linearGradient id="trk" x1="0" x2="1"><stop offset="0" stop-color="#22D3EE" stop-opacity="0.1"/><stop offset="0.5" stop-color="#22D3EE" stop-opacity="0.5"/><stop offset="1" stop-color="#22D3EE" stop-opacity="0.1"/></linearGradient>
+<linearGradient id="shim" x1="0" x2="1"><stop offset="0" stop-color="#FDE68A" stop-opacity="0"/><stop offset="0.5" stop-color="#FDE68A" stop-opacity="0.6"/><stop offset="1" stop-color="#FDE68A" stop-opacity="0"/></linearGradient>
+<clipPath id="gc"><rect x="578" y="352" width="60" height="80" rx="8"/></clipPath>
+</defs>
+
+
+
+<line x1="146" y1="400" x2="1774" y2="400" stroke="url(#trk)" stroke-width="4" stroke-dasharray="10 10"><animate attributeName="stroke-dashoffset" from="0" to="-40" dur="1s" repeatCount="indefinite"/></line>
+<g fill="#12161C" stroke="#232A33" stroke-width="2">
+<rect x="146" y="325" width="220" height="150" rx="20"/><rect x="498" y="325" width="220" height="150" rx="20"/><rect x="850" y="325" width="220" height="150" rx="20"/><rect x="1202" y="325" width="220" height="150" rx="20"/><rect x="1554" y="325" width="220" height="150" rx="20"/>
+</g>
+
+<g fill="none" stroke="#22D3EE" stroke-width="3" filter="url(#gl)">
+<rect x="146" y="325" width="220" height="150" rx="20" opacity="0"><animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.03;0.07;0.16;1" dur="6s" repeatCount="indefinite"/></rect>
+<rect x="498" y="325" width="220" height="150" rx="20" opacity="0"><animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.24;0.28;0.37;1" dur="6s" repeatCount="indefinite"/></rect>
+<rect x="850" y="325" width="220" height="150" rx="20" opacity="0"><animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.46;0.5;0.59;1" dur="6s" repeatCount="indefinite"/></rect>
+<rect x="1202" y="325" width="220" height="150" rx="20" opacity="0"><animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.68;0.72;0.81;1" dur="6s" repeatCount="indefinite"/></rect>
+<rect x="1554" y="325" width="220" height="150" rx="20" opacity="0"><animate attributeName="opacity" values="0;0;1;0;0;0" keyTimes="0;0.89;0.93;0.99;0.995;1" dur="6s" repeatCount="indefinite"/></rect>
+</g>
+
+
+<g fill="#1E252E"><rect x="186" y="347" width="140" height="18" rx="5"/><rect x="186" y="373" width="140" height="18" rx="5"/><rect x="186" y="399" width="140" height="18" rx="5"/><rect x="186" y="425" width="140" height="18" rx="5"/></g>
+<g fill="#22D3EE">
+<rect x="186" y="347" width="140" height="18" rx="5" opacity="0.15"><animate attributeName="opacity" values="0.15;0.9;0.15;0.15" keyTimes="0;0.1;0.25;1" dur="2.4s" repeatCount="indefinite"/></rect>
+<rect x="186" y="373" width="140" height="18" rx="5" opacity="0.15"><animate attributeName="opacity" values="0.15;0.15;0.9;0.15;0.15" keyTimes="0;0.25;0.35;0.5;1" dur="2.4s" repeatCount="indefinite"/></rect>
+<rect x="186" y="399" width="140" height="18" rx="5" opacity="0.15"><animate attributeName="opacity" values="0.15;0.15;0.9;0.15;0.15" keyTimes="0;0.5;0.6;0.75;1" dur="2.4s" repeatCount="indefinite"/></rect>
+<rect x="186" y="425" width="140" height="18" rx="5" opacity="0.15"><animate attributeName="opacity" values="0.15;0.15;0.9;0.15" keyTimes="0;0.75;0.85;1" dur="2.4s" repeatCount="indefinite"/></rect>
+</g>
+<g fill="#0B0D10"><polygon points="198,350 204,356 198,362 192,356"/><polygon points="198,376 204,382 198,388 192,382"/><polygon points="198,402 204,408 198,414 192,408"/><polygon points="198,428 204,434 198,440 192,434"/></g>
+
+
+<g fill="#161B22" stroke="#FDE68A" stroke-opacity="0.5" stroke-width="2">
+<rect x="578" y="352" width="60" height="80" rx="8"><animateTransform attributeName="transform" type="rotate" values="-8 608 440;-18 608 440;-8 608 440" dur="3s" repeatCount="indefinite"/></rect>
+<rect x="578" y="352" width="60" height="80" rx="8"><animateTransform attributeName="transform" type="rotate" values="8 608 440;18 608 440;8 608 440" dur="3s" repeatCount="indefinite"/></rect>
+<rect x="578" y="352" width="60" height="80" rx="8" fill="#1C1A12" stroke-opacity="1"/>
+</g>
+<polygon points="608,370 613,384 628,384 616,393 620,407 608,398 596,407 600,393 588,384 603,384" fill="#FDE68A" filter="url(#gl)"><animateTransform attributeName="transform" type="rotate" values="0 608 390;72 608 390" dur="3s" repeatCount="indefinite"/></polygon>
+<g fill="#FDE68A" opacity="0.55"><rect x="590" y="414" width="36" height="4" rx="2"/><rect x="594" y="422" width="28" height="4" rx="2"/></g>
+<rect x="540" y="352" width="30" height="80" fill="url(#shim)" clip-path="url(#gc)"><animate attributeName="x" values="540;650;650" keyTimes="0;0.5;1" dur="2.5s" repeatCount="indefinite"/></rect>
+
+
+<g fill="none" stroke="#7D8794" stroke-width="5" stroke-linecap="round">
+<path d="M926 345 Q908 345 908 362 L908 385 Q908 400 894 400 Q908 400 908 415 L908 438 Q908 455 926 455"/>
+<path d="M994 345 Q1012 345 1012 362 L1012 385 Q1012 400 1026 400 Q1012 400 1012 415 L1012 438 Q1012 455 994 455"/>
+</g>
+<rect x="934" y="380" width="52" height="40" rx="8" fill="none" stroke="#EEF0F2" stroke-opacity="0.5" stroke-width="2" stroke-dasharray="6 5"><animate attributeName="stroke-dashoffset" from="0" to="-22" dur="1s" repeatCount="indefinite"/></rect>
+<polygon points="0,-14 14,0 0,14 -14,0" fill="#22D3EE" filter="url(#gl)">
+<animateTransform attributeName="transform" type="translate" values="960 335;960 400;960 400;960 335;960 335" keyTimes="0;0.15;0.4;0.5;1" dur="3s" repeatCount="indefinite"/>
+<animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.1;0.4;0.5;1" dur="3s" repeatCount="indefinite"/></polygon>
+<circle r="13" fill="#F5A524" filter="url(#gl)" opacity="0">
+<animateTransform attributeName="transform" type="translate" values="960 335;960 335;960 400;960 400;960 335" keyTimes="0;0.5;0.65;0.9;1" dur="3s" repeatCount="indefinite"/>
+<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.5;0.6;0.9;1" dur="3s" repeatCount="indefinite"/></circle>
+
+
+<g fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+<path d="M1222 400 L1250 400 L1278 368 L1374 368 L1402 400" stroke="#22D3EE" stroke-opacity="0.55"/>
+<path d="M1250 400 L1278 432 L1374 432 L1402 400" stroke="#F5A524" stroke-opacity="0.55"/>
+</g>
+<rect x="1322" y="352" width="6" height="32" rx="3" fill="#EEF0F2"><animate attributeName="opacity" values="1;0.4;1" dur="1.5s" repeatCount="indefinite"/></rect>
+<circle r="7" fill="#22D3EE" filter="url(#gl)"><animateMotion path="M1222 400 L1250 400 L1278 368 L1374 368 L1402 400" dur="2s" repeatCount="indefinite"/></circle>
+<circle r="7" fill="#F5A524" filter="url(#gl)"><animateMotion path="M1222 400 L1250 400 L1278 432 L1374 432 L1402 400" dur="2s" begin="0.7s" repeatCount="indefinite"/></circle>
+<circle r="7" fill="#22D3EE" filter="url(#gl)">
+<animateMotion path="M1222 400 L1250 400 L1278 368 L1316 368 L1340 432 L1374 432 L1402 400" dur="2.6s" begin="1.3s" repeatCount="indefinite"/>
+<animate attributeName="fill" values="#22D3EE;#22D3EE;#F5A524;#F5A524" keyTimes="0;0.4;0.5;1" dur="2.6s" begin="1.3s" repeatCount="indefinite"/></circle>
+
+
+<g fill="#1E252E"><rect x="1598" y="368" width="20" height="20" rx="4"/><rect x="1626" y="368" width="20" height="20" rx="4"/><rect x="1654" y="368" width="20" height="20" rx="4"/><rect x="1682" y="368" width="20" height="20" rx="4"/><rect x="1710" y="368" width="20" height="20" rx="4"/></g>
+<g fill="#22D3EE">
+<rect x="1598" y="368" width="20" height="20" rx="4" opacity="0"><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.9;1" dur="4s" repeatCount="indefinite"/></rect>
+<rect x="1626" y="368" width="20" height="20" rx="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.14;0.18;0.9;1" dur="4s" repeatCount="indefinite"/></rect>
+<rect x="1654" y="368" width="20" height="20" rx="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.24;0.28;0.9;1" dur="4s" repeatCount="indefinite"/></rect>
+<rect x="1682" y="368" width="20" height="20" rx="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.6;0.64;0.9;1" dur="4s" repeatCount="indefinite"/></rect>
+<rect x="1710" y="368" width="20" height="20" rx="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.7;0.74;0.9;1" dur="4s" repeatCount="indefinite"/></rect>
+</g>
+<rect x="1682" y="368" width="20" height="20" rx="4" fill="#F25F5C" opacity="0"><animate attributeName="opacity" values="0;0;1;0.3;1;0;0" keyTimes="0;0.34;0.38;0.44;0.5;0.6;1" dur="4s" repeatCount="indefinite"/></rect>
+<rect x="1614" y="408" width="100" height="22" rx="11" fill="#22D3EE" opacity="0.8"><animate attributeName="fill" values="#22D3EE;#22D3EE;#F25F5C;#F25F5C;#22D3EE;#22D3EE" keyTimes="0;0.34;0.38;0.58;0.62;1" dur="4s" repeatCount="indefinite"/></rect>
+<circle cx="1664" cy="448" r="9" fill="none" stroke="#7D8794" stroke-width="3" stroke-dasharray="14 44"><animateTransform attributeName="transform" type="rotate" from="0 1664 448" to="360 1664 448" dur="1s" repeatCount="indefinite"/></circle>
+
+
+<g>
+<animateMotion path="M146 400 L1774 400" dur="6s" repeatCount="indefinite"/>
+<circle r="20" fill="none" stroke="#22D3EE" stroke-width="2" opacity="0.6"><animate attributeName="r" values="16;26;16" dur="1s" repeatCount="indefinite"/></circle>
+<polygon points="0,-12 12,0 0,12 -12,0" fill="#22D3EE" stroke="#0B0D10" stroke-width="2" filter="url(#gl)"/>
+</g>
+
+
+</svg></div>
+<div data-frame-id="l256" class="fx" style="left:161px;top:584px;width:400px;text-align:center;font-size:30px">Decision Registry</div>
+<div data-frame-id="l608" class="fx" style="left:759px;top:584px;width:400px;text-align:center;font-size:30px">Golden Set</div>
+<div data-frame-id="l960" class="fx" style="left:1357px;top:584px;width:400px;text-align:center;font-size:30px">Same Schema</div>
+<div data-frame-id="l1312" class="fx" style="left:461px;top:954px;width:400px;text-align:center;font-size:30px">A / B / Cascade</div>
+<div data-frame-id="l1664" class="fx" style="left:1059px;top:954px;width:400px;text-align:center;font-size:30px">CI Regression</div>
