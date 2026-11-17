@@ -278,17 +278,17 @@ label = "Result: 68% lower cost"
 notes = "The result: 68% lower cost than the GPT 5.1 detector. Indexed, 100 becomes 32. The stack is the Decisions API plus the security Guardrail plus 6.1 Terra on about 10% of messages. About 90% of messages no longer reach an LLM. This is Impel's internal measurement."
 
 [[slides]]
-fragment = "slides/26_code.html"
-label = "Code execution"
-slide_class = "impel-divider"
-notes = "Live code. One predicate and its probability. Many named questions in one request. choice and score with confidence. Thresholds from labelled examples. Gating a tool call in the harness. Escalating low confidence to the LLM."
-
-[[slides]]
 fragment = "slides/27_takeaways.html"
 label = "Takeaways"
 notes = "Three things to take home. One: for every step, ask whether it is writing or deciding. Two: the model returns probabilities and your code makes the call. Three: keep the LLM for the cases that need it; at Impel that is about 10% of jailbreak checks and the bill is 68% lower. Questions."
 builds = [["n2"], ["n3"]]
 build_effect = "rise"
+
+[[slides]]
+fragment = "slides/26_code.html"
+label = "Code execution"
+slide_class = "impel-divider"
+notes = "Live code. One predicate and its probability. Many named questions in one request. choice and score with confidence. Thresholds from labelled examples. Gating a tool call in the harness. Escalating low confidence to the LLM."
 
 [[slides]]
 source = 21
